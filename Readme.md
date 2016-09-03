@@ -3,6 +3,12 @@ Check http://www.twcenter.net/forums/showthread.php?359840-War-for-the-Colonies-
 for more info.
 
 Requirements:
-- Java 8 installed.
-- Be run from the same directory where the folder named 'wftc' is.
-- Be run by a user with write permissions to the destination directory.
+- That Java 8  or later is installed.
+- To be run from the same directory where the folder named 'wftc' is.
+- To be run by a user with write permissions to the destination directory.
+
+Usage:
+Select the main directory of the game (not the americas one) and
+click on the install button.
+Launch the mod by double-clicking on 'War for the Colonies.bat' file
+in the /mods/americas/ directory.

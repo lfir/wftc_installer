@@ -109,7 +109,9 @@ public class WftCInstaller extends JFrame {
 	    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.txt").toPath()));
 	    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.db").toPath()));
 	    	 JOptionPane.showMessageDialog(null, "Installation complete. The backup directory is\n"
-	    			 				              + bkDir.toString());
+	    			 				              + bkDir.toString() + "\n" +
+	    			 				              "Launch the mod by double-clicking on 'War for the Colonies.bat'\n" +
+	    			 				              "in the /mods/americas/ directory.");
 	    }
 	}
 }
