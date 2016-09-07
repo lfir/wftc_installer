@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class WftCInstaller extends JFrame {
 
@@ -71,12 +72,12 @@ public class WftCInstaller extends JFrame {
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(47)
 					.addComponent(btnSelectMedievalIi, GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
 					.addGap(45))
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addGap(84)
 					.addComponent(btnInstallWarFor, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
 					.addGap(81))
@@ -85,9 +86,9 @@ public class WftCInstaller extends JFrame {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
-					.addComponent(btnSelectMedievalIi, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-					.addGap(48)
-					.addComponent(btnInstallWarFor, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+					.addComponent(btnSelectMedievalIi, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+					.addComponent(btnInstallWarFor, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 					.addGap(31))
 		);
 		getContentPane().setLayout(groupLayout);
