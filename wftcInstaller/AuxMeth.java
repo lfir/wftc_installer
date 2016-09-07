@@ -20,9 +20,10 @@ public class AuxMeth
 	
 	//actions
     public static void copyFolder(File sourceFolder, File destinationFolder) throws IOException {
-    	//Recursively copies a directory and its contents overwriting existing files
+    	//Recursively copies the contents of a directory, overwriting existing files in dest
     	FileSystem fs = FileSystems.getDefault();
     	final Path tmp = fs.getPath(destinationFolder.getParent());
+
         //Check if sourceFolder is a directory or file
         if (sourceFolder.isDirectory()) {
             //Verify if destinationFolder is already present; if not then create it
@@ -45,7 +46,7 @@ public class AuxMeth
     
     public static void copyFile(Path sourceFile, Path destinationFile, Path parentFolder) throws IOException {
     	if (parentFolder != null) { // null will be returned if the path has no parent
-    	    Files.createDirectories(parentFolder); 
+    	    //Files.createDirectories(parentFolder); 
         	Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
             //System.out.println("File copied :: " + destinationFolder);
     	}
@@ -59,7 +60,7 @@ public class AuxMeth
     }
 	
 	public static void bkFilesIfExist(String localDir, File resFolder, File destinationFolder) throws IOException {
-		String q1 = "";
+		String q1 = "\n";
 		Scanner scanFile = new Scanner(new File(resFolder + "/wftc-modified-file-list.txt"));
 		while (scanFile.hasNextLine()) {
 			File nf = new File(localDir + q1);

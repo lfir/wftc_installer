@@ -23,7 +23,7 @@ public class WftCInstaller extends JFrame {
 				try {
 					WftCInstaller frame = new WftCInstaller();
 					frame.setVisible(true);
-					frame.pack();
+					//frame.pack();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,7 +35,7 @@ public class WftCInstaller extends JFrame {
 		
 		setResizable(false);
 		setTitle("War for the Colonies Installer");
-		setBounds(100, 100, 270, 220);
+		setBounds(100, 100, 375, 215);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Installation i1 = new WftCInstaller.Installation();
@@ -73,22 +73,22 @@ public class WftCInstaller extends JFrame {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(47)
+					.addComponent(btnSelectMedievalIi, GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+					.addGap(45))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addGap(84)
-					.addComponent(btnInstallWarFor, GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+					.addComponent(btnInstallWarFor, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
 					.addGap(81))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnSelectMedievalIi, GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(23)
-					.addComponent(btnSelectMedievalIi, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addGap(42)
-					.addComponent(btnInstallWarFor, GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-					.addGap(50))
+					.addComponent(btnSelectMedievalIi, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+					.addGap(48)
+					.addComponent(btnInstallWarFor, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+					.addGap(31))
 		);
 		getContentPane().setLayout(groupLayout);
 	}
