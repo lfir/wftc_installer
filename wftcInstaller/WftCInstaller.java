@@ -24,7 +24,6 @@ public class WftCInstaller extends JFrame {
 				try {
 					WftCInstaller frame = new WftCInstaller();
 					frame.setVisible(true);
-					//frame.pack();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,12 +55,14 @@ public class WftCInstaller extends JFrame {
 		btnInstallWarFor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(fcORG.getSelectedFile() != null) {
-					if(AuxMeth.showTextMessage() == 0) {
-						try {
-							i1.performInstall(fcORG.getSelectedFile().toString());
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
+					Lic lic = new Lic();
+					int accepted = JOptionPane.showConfirmDialog(null, lic.getContentPane(), 
+																"License information", JOptionPane.YES_NO_OPTION,
+																JOptionPane.PLAIN_MESSAGE);
+					try {
+						i1.performInstallIfLicAccepted(fcORG.getSelectedFile().toString(), accepted);
+					} catch (Exception e1) {
+						e1.printStackTrace();
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "It is necessary to select the directory\nwhere"
@@ -72,12 +73,12 @@ public class WftCInstaller extends JFrame {
 		
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(47)
 					.addComponent(btnSelectMedievalIi, GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
 					.addGap(45))
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(84)
 					.addComponent(btnInstallWarFor, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
 					.addGap(81))
@@ -96,23 +97,25 @@ public class WftCInstaller extends JFrame {
 	
 	public static class Installation {
 		
-	     AuxMeth am = new AuxMeth();
+	     private AuxMeth am = new AuxMeth();
 	     
-	     public void performInstall(String loc_path) throws Exception {
-	    	 File bkDir = new File(loc_path + "/wftcBK");
-	    	 CodeSource codeSource = WftCInstaller.class.getProtectionDomain().getCodeSource();
-	    	 File jarFile = new File(codeSource.getLocation().toURI().getPath());
-	    	 String jarDir = jarFile.getParentFile().getPath();
-	    	 AuxMeth.mkDirIfNotPresent(bkDir);
-	    	 File resFolder = new File(jarDir + "/wftc");
-	    	 AuxMeth.bkFilesIfExist(loc_path, resFolder, bkDir);
-	    	 AuxMeth.copyFolder(resFolder, (new File(loc_path )));
-	    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.txt").toPath()));
-	    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.db").toPath()));
-	    	 JOptionPane.showMessageDialog(null, "Installation complete. The backup directory is\n"
-	    			 				              + bkDir.toString() + "\n" +
-	    			 				              "Launch the mod by double-clicking on 'War for the Colonies.bat'\n" +
-	    			 				              "in the /mods/americas/ directory.");
+	     public void performInstallIfLicAccepted(String loc_path, int licenseAccepted) throws Exception {
+	    	 if(licenseAccepted == 0) {
+		    	 File bkDir = new File(loc_path + "/wftcBK");
+		    	 CodeSource codeSource = WftCInstaller.class.getProtectionDomain().getCodeSource();
+		    	 File jarFile = new File(codeSource.getLocation().toURI().getPath());
+		    	 String jarDir = jarFile.getParentFile().getPath();
+		    	 AuxMeth.mkDirIfNotPresent(bkDir);
+		    	 File resFolder = new File(jarDir + "/wftc");
+		    	 AuxMeth.bkFilesIfExist(loc_path, resFolder, bkDir);
+		    	 AuxMeth.copyFolder(resFolder, (new File(loc_path )));
+		    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.txt").toPath()));
+		    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.db").toPath()));
+		    	 JOptionPane.showMessageDialog(null, "Installation complete. The backup directory is\n"
+		    			 				              + bkDir.toString() + "\n" +
+		    			 				              "Launch the mod by double-clicking on 'War for the Colonies.bat'\n" +
+		    			 				              "in the /mods/americas/ directory.");
+	    	 }
 	    }
 	}
 }
