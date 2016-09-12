@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -20,6 +19,30 @@ public class AuxMeth
 {
 	
 	//actions
+	public static void bkFilesIfExist(String localDir, File resFolder, File destinationFolder) throws IOException {
+		String q1 = "\n";
+		Scanner scanFile = new Scanner(new File(resFolder + "/wftc-modified-file-list.txt"));
+		while (scanFile.hasNextLine()) {
+			File nf = new File(localDir + q1);
+			if(nf.exists()) {
+				Path df = destinationFolder.toPath();
+				Path np = nf.toPath();
+				Files.copy(np, df.resolve(np.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+			
+			}
+			q1 = scanFile.nextLine();
+		}
+		scanFile.close();
+	}
+	
+    public static void copyFile(Path sourceFile, Path destinationFile, Path parentFolder) throws IOException {
+    	if (parentFolder != null) { // null will be returned if the path has no parent
+    	    //Files.createDirectories(parentFolder); 
+        	Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
+            //System.out.println("File copied :: " + destinationFolder);
+    	}
+	}
+	
     public static void copyFolder(File sourceFolder, File destinationFolder) throws IOException {
     	//Recursively copies the contents of a directory, overwriting existing files in dest
     	FileSystem fs = FileSystems.getDefault();
@@ -45,36 +68,12 @@ public class AuxMeth
         }
     }
     
-    public static void copyFile(Path sourceFile, Path destinationFile, Path parentFolder) throws IOException {
-    	if (parentFolder != null) { // null will be returned if the path has no parent
-    	    //Files.createDirectories(parentFolder); 
-        	Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
-            //System.out.println("File copied :: " + destinationFolder);
-    	}
-	}
-
 	public static void mkDirIfNotPresent(File folder) {
         if (!folder.exists()) {
         	folder.mkdir();
             //System.out.println("Directory created :: " + destinationFolder);
         }
     }
-	
-	public static void bkFilesIfExist(String localDir, File resFolder, File destinationFolder) throws IOException {
-		String q1 = "\n";
-		Scanner scanFile = new Scanner(new File(resFolder + "/wftc-modified-file-list.txt"));
-		while (scanFile.hasNextLine()) {
-			File nf = new File(localDir + q1);
-			if(nf.exists()) {
-				Path df = destinationFolder.toPath();
-				Path np = nf.toPath();
-				Files.copy(np, df.resolve(np.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-			
-			}
-			q1 = scanFile.nextLine();
-		}
-		scanFile.close();
-	}
 	
 	public static void renameDir(File origDir, String desName) throws IOException {
 	//rename non empty dir too
@@ -121,15 +120,11 @@ public class AuxMeth
     
     public static void createDesktopShortcut(String local_path) throws IOException {
     	//working on windows and linux
-    	try {		
 	    	 File desktopDir = new File(System.getProperty("user.home"), "Desktop");
 	    	 Path homeDirLnk = new File(desktopDir + "/War for the Colonies").toPath();
 	    	 Path targetFile = (new File(local_path + "/mods/americas/War for the Colonies.bat")).toPath();
 	    	 Files.deleteIfExists(homeDirLnk);
 	    	 Files.createSymbolicLink(homeDirLnk, targetFile);
-    	}
-    	catch(Exception e) {
-    	}
     }
     
     //infos

@@ -56,7 +56,7 @@ public class WftCInstaller extends JFrame {
 		btnInstallWarFor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(fcORG.getSelectedFile() != null) {
-					Lic lic = new Lic();
+					License lic = new License();
 					int accepted = JOptionPane.showConfirmDialog(null, lic.getContentPane(), 
 																"License information", JOptionPane.YES_NO_OPTION,
 																JOptionPane.PLAIN_MESSAGE);
@@ -112,8 +112,6 @@ public class WftCInstaller extends JFrame {
 		    	 AuxMeth.copyFolder(resFolder, (new File(loc_path )));
 		    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.txt").toPath()));
 		    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.db").toPath()));
-		  /*  	 Path homeDirLnk = new File(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() +
-		    			 				"/Desktop/War for the Colonies").toPath(); */
 		    	 AuxMeth.createDesktopShortcut(loc_path);
 		    	 JOptionPane.showMessageDialog(null, "Installation complete. The backup directory is\n"
 		    			 				              + bkDir.toString() + "\n" +

@@ -9,14 +9,14 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextPane;
 import javax.swing.JToggleButton;
 
-public class Lic extends JInternalFrame {
+public class License extends JInternalFrame {
 
 	private JPanel contentPane;
 
 	/**
 	 * Create the frame.
 	 */
-	public Lic() {
+	public License() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 465, 330);
