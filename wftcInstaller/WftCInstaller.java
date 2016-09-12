@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.CodeSource;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -111,10 +112,15 @@ public class WftCInstaller extends JFrame {
 		    	 AuxMeth.copyFolder(resFolder, (new File(loc_path )));
 		    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.txt").toPath()));
 		    	 Files.deleteIfExists((new File(loc_path + "/mods/americas/data/descr_geography_new.db").toPath()));
+		  /*  	 Path homeDirLnk = new File(javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory() +
+		    			 				"/Desktop/War for the Colonies").toPath(); */
+		    	 AuxMeth.createDesktopShortcut(loc_path);
 		    	 JOptionPane.showMessageDialog(null, "Installation complete. The backup directory is\n"
 		    			 				              + bkDir.toString() + "\n" +
-		    			 				              "Launch the mod by double-clicking on 'War for the Colonies.bat'\n" +
-		    			 				              "in the /mods/americas/ directory.");
+		    			 				              "Launch the mod by double-clicking on \n" +
+		    			 				              "'War for the Colonies.bat'\n" +
+		    			 				              "in the /mods/americas/ directory.\n" +
+		    			 				              "or its shortcut on the desktop.");
 	    	 }
 	    }
 	}

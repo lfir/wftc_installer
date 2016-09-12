@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -117,6 +118,19 @@ public class AuxMeth
 				"aMessage",
 				"aTitle", JOptionPane.YES_NO_OPTION);
 	}
+    
+    public static void createDesktopShortcut(String local_path) throws IOException {
+    	//working on windows and linux
+    	try {		
+	    	 File desktopDir = new File(System.getProperty("user.home"), "Desktop");
+	    	 Path homeDirLnk = new File(desktopDir + "/War for the Colonies").toPath();
+	    	 Path targetFile = (new File(local_path + "/mods/americas/War for the Colonies.bat")).toPath();
+	    	 Files.deleteIfExists(homeDirLnk);
+	    	 Files.createSymbolicLink(homeDirLnk, targetFile);
+    	}
+    	catch(Exception e) {
+    	}
+    }
     
     //infos
     public static boolean isUnixOS() {
