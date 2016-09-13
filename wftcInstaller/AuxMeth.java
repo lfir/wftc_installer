@@ -112,12 +112,6 @@ public class AuxMeth
         return tempScript;
     }
     
-    public static int showTextMessage()	{
-		return JOptionPane.showConfirmDialog(null,
-				"aMessage",
-				"aTitle", JOptionPane.YES_NO_OPTION);
-	}
-    
     public static void createDesktopShortcut(String local_path) throws IOException {
     	//working on windows and linux
 	    	 File desktopDir = new File(System.getProperty("user.home"), "Desktop");
@@ -127,6 +121,11 @@ public class AuxMeth
 	    	 Files.createSymbolicLink(homeDirLnk, targetFile);
     }
     
+    public static Path strToPath(String str) {
+    	Path path = (new File(str)).toPath();
+    	return path;
+    }
+    
     //infos
     public static boolean isUnixOS() {
     	return  System.getProperty("os.name").equals("Linux") ||
@@ -134,3 +133,4 @@ public class AuxMeth
     }
 
 }
+
