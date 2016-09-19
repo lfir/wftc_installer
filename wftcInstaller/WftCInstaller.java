@@ -4,7 +4,6 @@ import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.security.CodeSource;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -98,7 +97,7 @@ public class WftCInstaller extends JFrame {
 	
 	public static class Installation {
 		
-	     private AuxMeth am = new AuxMeth();
+	     //private AuxMeth am = new AuxMeth();
 	     
 	     public void performInstallIfLicAccepted(String loc_path, int licenseAccepted) throws Exception {
 	    	 if(licenseAccepted == 0) {
