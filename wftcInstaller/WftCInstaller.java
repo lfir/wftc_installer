@@ -17,7 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class WftCInstaller extends JFrame {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -31,7 +31,7 @@ public class WftCInstaller extends JFrame {
 		});
 	}
 	
-	public WftCInstaller() throws IOException {
+	public WftCInstaller() {
 		
 		setResizable(false);
 		setTitle("War for the Colonies Installer");
