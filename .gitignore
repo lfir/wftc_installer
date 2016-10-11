@@ -1,0 +1,7 @@
+*.jar
+*.zip
+bin/
+wftc/
+.classpath
+.project
+.settings/
